@@ -1,13 +1,14 @@
 import React from "react";
-import { AppContainer } from "./App.styles";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <AppContainer>
-      <Header />
-     
-    </AppContainer>
+    <>
+      <Navbar />
+      <div style={{ marginTop: "60px" }}>
+        {/* Rest of your content */}
+      </div>
+    </>
   );
 }
 

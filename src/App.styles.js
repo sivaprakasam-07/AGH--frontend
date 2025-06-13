@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const AppContainer = styled.div`
-  background-color: #ffffff; 
-  color: #000000;             
+  background-color: #1e1e1e;
   min-height: 100vh;
-  padding-top: 90px;
-  box-sizing: border-box;
+  color: white;
+  padding-top: 48px; /* height of the fixed navbar */
 
   @media (max-width: 768px) {
-    padding-top: 130px;
+    padding-top: 64px; /* give more space if navbar wraps on small screens */
   }
+
+  font-family: sans-serif;
 `;
