@@ -1,13 +1,16 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import { AppContainer } from "./App.styles";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div style={{ marginTop: "60px" }}>
-        {/* Rest of your content */}
-      </div>
+      <Sidebar />
+      <AppContainer>
+       
+      </AppContainer>
     </>
   );
 }

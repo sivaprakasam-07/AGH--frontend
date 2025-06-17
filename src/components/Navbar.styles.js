@@ -22,6 +22,7 @@ export const NavContainer = styled.div`
   }
 `;
 
+
 export const Logo = styled.div`
   font-size: 20px;
   margin-right: 24px;
