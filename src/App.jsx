@@ -1,17 +1,70 @@
+import React, { useState } from 'react';
+import { Container, AddSectionButton, PlaceholderCard } from './formcomponents/form';
+import Form from './formcomponents/form.jsx';
 
-// import Header from './components/Header/Header.jsx';
-// import UpcomingContests from './components/UpcomingContests/UpcomingContests.jsx';
-// import FeaturedContests from './components/FeaturedContests/FeaturedContests.jsx';
-// import PastContests from './components/PastContests/PastContests.jsx';
-// import Rankings from './components/Rankings/Ranking.jsx';
-// import { AppContainer ,ContentWrapper } from './App';
+export default function App() {
+  const [showForm, setShowForm] = useState(false);
+  const [sections, setSections] = useState([]);
 
-function App() {
+  const handleAddSection = (newSection) => {
+    if (newSection.sectionName && newSection.topic && newSection.questionType) {
+      setSections((prevSections) => [...prevSections, newSection]);
+      setShowForm(false);
+    } else {
+      alert('Please fill all fields');
+    }
+  };
+
+  const handleDelete = (indexToRemove) => {
+    const updatedSections = sections.filter((_, index) => index !== indexToRemove);
+    setSections(updatedSections);
+  };
+
   return (
-     <>
-     hi
-     </>
-  )
-}
+    <Container>
+      <AddSectionButton onClick={() => setShowForm(!showForm)}>
+        {showForm ? 'Close Form' : 'Add Section'}
+      </AddSectionButton>
 
-export default App
+      {showForm && (
+        <Form onSubmit={handleAddSection} onClose={() => setShowForm(false)} />
+      )}
+
+      {sections.map((section, index) => (
+        <PlaceholderCard key={index}>
+          <p><strong>Section:</strong> {section.sectionName}</p>
+          <p><strong>Topic:</strong> {section.topic}</p>
+          <p><strong>Type:</strong> {section.questionType}</p>
+          <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+            <button
+              style={{
+                backgroundColor: '#facc15',
+                border: 'none',
+                padding: '8px 12px',
+                borderRadius: '5px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+              }}
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDelete(index)}
+              style={{
+                backgroundColor: '#ef4444',
+                border: 'none',
+                padding: '8px 12px',
+                borderRadius: '5px',
+                color: 'white',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </PlaceholderCard>
+      ))}
+    </Container>
+  );
+}
