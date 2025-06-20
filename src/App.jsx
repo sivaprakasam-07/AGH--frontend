@@ -1,17 +1,21 @@
-
-// import Header from './components/Header/Header.jsx';
-// import UpcomingContests from './components/UpcomingContests/UpcomingContests.jsx';
-// import FeaturedContests from './components/FeaturedContests/FeaturedContests.jsx';
-// import PastContests from './components/PastContests/PastContests.jsx';
-// import Rankings from './components/Rankings/Ranking.jsx';
-// import { AppContainer ,ContentWrapper } from './App';
+import React, { useState } from 'react';
+import AddProblem from './components/AdminPhaseAddProblemComponent/AddProblem.jsx';
+import AddSection from './components/AdminPhaseAddSectionComponent/AddSection.jsx';
+import { AppContainer,Panel } from './App';
 
 function App() {
+  const [triggerAddProblem, setTriggerAddProblem] = useState(false);
+
   return (
-     <>
-     hi
-     </>
-  )
+    <AppContainer>
+      <Panel>
+        <AddProblem triggerAdd={triggerAddProblem} setTriggerAdd={setTriggerAddProblem} />
+      </Panel>
+      <Panel>
+        <AddSection setTriggerAdd={setTriggerAddProblem} />
+      </Panel>
+    </AppContainer>
+  );
 }
 
-export default App
+export default App;
